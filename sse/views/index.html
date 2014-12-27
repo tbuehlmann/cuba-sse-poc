@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <input type='text' id='message' autofocus></input>
+      <input type='submit' id='send-message' value='Send'>
+    </form>
+
+    <ul id='messages'></ul>
+
+    <script>
+      var eventSource = new EventSource('sse');
+
+      eventSource.addEventListener('chat', function(event) {
+        $('#messages').append('<li>' + event.data + '</li>');
+      })
+      
+      $('#send-message').on('click', function(event) {
+        var message = $('#message').val();
+        $.post('messages', 'message=' + message);
+        $('#message').val('');
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
