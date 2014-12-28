@@ -19,7 +19,7 @@ module SSE
         stream = Stream.new
         settings[:broadcast_list].add(stream)
         res.headers['Content-Type'] = 'text/event-stream'
-        res.body = Rack::BodyProxy.new(stream) { puts :called; settings[:broadcast_list].remove(stream) }
+        res.body = Rack::BodyProxy.new(stream) { settings[:broadcast_list].remove(stream) }
       end
 
       on post, 'messages', param('message') do |message|
