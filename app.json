@@ -1,5 +1,5 @@
 {
   "name": "Cuba SSE PoC",
   "description": "A Cuba example Application using Server Sent Events via Puma",
-  "repository": "https://github.com/tbuehlmann/cuba-sse-poc",
+  "repository": "https://github.com/tbuehlmann/cuba-sse-poc"
 }
